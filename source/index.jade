@@ -7,11 +7,10 @@ block  mainVars
   - keywords = 'keywords'
   - page_class = 'top'
 block content
-  #slider
+  #slideshow
     ul
       - for (var i = 1; i < 6; i++)
         li
           img(src="image/mainimg#{i}.jpg")
 
-  input#start(type="button", value="start")
   input#stop(type="button", value="stop")
