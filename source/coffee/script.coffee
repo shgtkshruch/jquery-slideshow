@@ -1,3 +1,5 @@
 $ ->
   $ '#slideshow'
-    .slideshow()
+    .slideshow(
+      icon: true
+    )

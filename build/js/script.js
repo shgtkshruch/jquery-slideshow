@@ -1,6 +1,8 @@
 (function() {
   $(function() {
-    return $('#slideshow').slideshow();
+    return $('#slideshow').slideshow({
+      icon: true
+    });
   });
 
 }).call(this);
