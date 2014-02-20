@@ -74,23 +74,23 @@ class Slideshow
     if @options.center
       @$slider
         .css
-          'width': @lw
-          'height': @lh
-          'overflow': 'hidden'
-          'margin': '0 auto'
+          width: @lw
+          height: @lh
+          overflow: 'hidden'
+          margin: '0 auto'
       @$ul
         .css
-          'width': @lw * 2
+          width: @lw * 2
     else
       @$slider
         .css
-          'width': '100%'
-          'height': @lh
-          'overflow': 'hidden'
-          'position': 'relative'
+          width: '100%'
+          height: @lh
+          overflow: 'hidden'
+          position: 'relative'
       @$ul
         .css
-          'position': 'absolute'
+          position: 'absolute'
       @$li
         .eq @len
         .remove()
@@ -106,10 +106,10 @@ class Slideshow
       $layer = $ '<div class="layer"></div>'
       $layer
         .css
-          'height': '100%'
+          height: '100%'
           'background-color': @options.backgroundColor
-          'opacity': @options.opacity
-          'position': 'absolute'
+          opacity: @options.opacity
+          position: 'absolute'
         .insertAfter @$ul
 
       if @options.icon
@@ -118,9 +118,9 @@ class Slideshow
           .addClass 'fa'
           .addClass @iconSize
           .css
-            'color': @options.iconColor
-            'position': 'absolute'
-            'top': '50%'
+            color: @options.iconColor
+            position: 'absolute'
+            top: '50%'
           .appendTo $layer
       i++
 
@@ -151,12 +151,12 @@ class Slideshow
       @$leftIcon
         .css
           'margin-top': - height / 2
-          'left': @options.iconPositionHorizon
+          left: @options.iconPositionHorizon
 
       @$rightIcon
         .css
           'margin-top': - height / 2
-          'right': @options.iconPositionHorizon
+          right: @options.iconPositionHorizon
     @
 
   windowResize: ->
@@ -169,17 +169,17 @@ class Slideshow
 
     @$ul
       .css
-        'width': @lw * 4
-        'left': -(@lw - (@$windowWidth - @lw) / 2)
+        width: @lw * 4
+        left: -(@lw - (@$windowWidth - @lw) / 2)
 
     @$leftLayer
       .css
-        'width': (@$windowWidth - @lw) / 2
-        'left': 0
+        width: (@$windowWidth - @lw) / 2
+        left: 0
     @$rightLayer
       .css
-        'width': (@$windowWidth - @lw) / 2
-        'right': 0
+        width: (@$windowWidth - @lw) / 2
+        right: 0
 
     if @$windowWidth < @lw + @$leftIcon.width() * 4
       @$slider
@@ -237,12 +237,14 @@ class Slideshow
   prevSlide: ->
     @$ul
       .css
-        'left': (@$windowWidth - @lw) / 2 - @lw * 2 
+        left: (@$windowWidth - @lw) / 2 - @lw * 2 
       .find 'li'
-      .eq @len
-      .remove()
-      .prependTo @$ul
-    @$ul
+        .eq @len
+          .remove()
+            .prependTo @$ul
+          .end()
+        .end()
+      .end()
       .animate
         'margin-left': @lw
       , @options.duration, @options.easing, @_prevCallback
@@ -251,7 +253,7 @@ class Slideshow
   _prevCallback: =>
     @$ul
       .css
-        'left': (@$windowWidth - @lw) / 2 - @lw
+        left: (@$windowWidth - @lw) / 2 - @lw
         'margin-left': 0
     @slideRunning = false
     @

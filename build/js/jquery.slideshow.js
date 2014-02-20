@@ -60,23 +60,23 @@
     Slideshow.prototype.init = function() {
       if (this.options.center) {
         this.$slider.css({
-          'width': this.lw,
-          'height': this.lh,
-          'overflow': 'hidden',
-          'margin': '0 auto'
+          width: this.lw,
+          height: this.lh,
+          overflow: 'hidden',
+          margin: '0 auto'
         });
         this.$ul.css({
-          'width': this.lw * 2
+          width: this.lw * 2
         });
       } else {
         this.$slider.css({
-          'width': '100%',
-          'height': this.lh,
-          'overflow': 'hidden',
-          'position': 'relative'
+          width: '100%',
+          height: this.lh,
+          overflow: 'hidden',
+          position: 'relative'
         });
         this.$ul.css({
-          'position': 'absolute'
+          position: 'absolute'
         });
         this.$li.eq(this.len).remove().prependTo(this.$ul);
         this.layer();
@@ -91,17 +91,17 @@
       while (i < 2) {
         $layer = $('<div class="layer"></div>');
         $layer.css({
-          'height': '100%',
+          height: '100%',
           'background-color': this.options.backgroundColor,
-          'opacity': this.options.opacity,
-          'position': 'absolute'
+          opacity: this.options.opacity,
+          position: 'absolute'
         }).insertAfter(this.$ul);
         if (this.options.icon) {
           $i = $('<i></i>');
           $i.addClass('fa').addClass(this.iconSize).css({
-            'color': this.options.iconColor,
-            'position': 'absolute',
-            'top': '50%'
+            color: this.options.iconColor,
+            position: 'absolute',
+            top: '50%'
           }).appendTo($layer);
         }
         i++;
@@ -116,11 +116,11 @@
         height = this.$leftIcon.height();
         this.$leftIcon.css({
           'margin-top': -height / 2,
-          'left': this.options.iconPositionHorizon
+          left: this.options.iconPositionHorizon
         });
         this.$rightIcon.css({
           'margin-top': -height / 2,
-          'right': this.options.iconPositionHorizon
+          right: this.options.iconPositionHorizon
         });
       }
       return this;
@@ -140,16 +140,16 @@
     Slideshow.prototype.resize = function() {
       this.$windowWidth = this.$window.width();
       this.$ul.css({
-        'width': this.lw * 4,
-        'left': -(this.lw - (this.$windowWidth - this.lw) / 2)
+        width: this.lw * 4,
+        left: -(this.lw - (this.$windowWidth - this.lw) / 2)
       });
       this.$leftLayer.css({
-        'width': (this.$windowWidth - this.lw) / 2,
-        'left': 0
+        width: (this.$windowWidth - this.lw) / 2,
+        left: 0
       });
       this.$rightLayer.css({
-        'width': (this.$windowWidth - this.lw) / 2,
-        'right': 0
+        width: (this.$windowWidth - this.lw) / 2,
+        right: 0
       });
       if (this.$windowWidth < this.lw + this.$leftIcon.width() * 4) {
         this.$slider.find('i').css({
@@ -212,9 +212,8 @@
 
     Slideshow.prototype.prevSlide = function() {
       this.$ul.css({
-        'left': (this.$windowWidth - this.lw) / 2 - this.lw * 2
-      }).find('li').eq(this.len).remove().prependTo(this.$ul);
-      this.$ul.animate({
+        left: (this.$windowWidth - this.lw) / 2 - this.lw * 2
+      }).find('li').eq(this.len).remove().prependTo(this.$ul).end().end().end().animate({
         'margin-left': this.lw
       }, this.options.duration, this.options.easing, this._prevCallback);
       return this;
@@ -222,7 +221,7 @@
 
     Slideshow.prototype._prevCallback = function() {
       this.$ul.css({
-        'left': (this.$windowWidth - this.lw) / 2 - this.lw,
+        left: (this.$windowWidth - this.lw) / 2 - this.lw,
         'margin-left': 0
       });
       this.slideRunning = false;
